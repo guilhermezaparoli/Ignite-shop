@@ -45,6 +45,7 @@ minWidth: 540,
     
     strong: {
       fontSize: '$lg',
+      color: '$gray100'
     },
 
     span: {
