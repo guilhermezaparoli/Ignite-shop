@@ -20,7 +20,7 @@ export const Product = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-minWidth: 540,
+  minWidth: 540,
   img: {
     objectFit: 'cover',
   },
@@ -31,7 +31,7 @@ minWidth: 540,
     left: '0.25rem',
     right: '0.25rem',
     borderRadius: 6,
-    padding: '2rem',
+    padding: '1.25rem 2rem',
 
     display: 'flex',
     alignItems: 'center',
@@ -42,16 +42,22 @@ minWidth: 540,
     transform: 'translateY(110%)',
     opacity: 0,
     transition: 'all 0.2s ease-out',
-    
+
     strong: {
       fontSize: '$lg',
-      color: '$gray100'
+      color: '$gray100',
     },
 
     span: {
-      fontSize: '$xl',
+      fontSize: '$lg',
       fontWeight: 'bold',
       color: '$green300',
+    },
+
+    div: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 8,
     },
   },
 
@@ -62,3 +68,22 @@ minWidth: 540,
     },
   },
 });
+
+
+export const ContainerIconGreen = styled("div", {
+  padding: 12,
+  borderRadius: 6,
+  backgroundColor: '$green500',
+  cursor: 'pointer',
+
+
+  img: {
+    color: '$white'
+  },
+
+  transition: '0.3s',
+
+  '&:hover': {
+    backgroundColor: '$green300'
+  }
+})

@@ -1,4 +1,8 @@
-import { HomeContainer, Product } from '../styles/pages/home';
+import {
+  ContainerIconGreen,
+  HomeContainer,
+  Product,
+} from '../styles/pages/home';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
@@ -7,6 +11,7 @@ import { GetStaticProps } from 'next';
 import Stripe from 'stripe';
 import Link from 'next/link';
 import Head from 'next/head';
+import BagIconCart from '../assets/images/icon-bag-white.svg';
 
 interface HomeProps {
   products: {
@@ -40,10 +45,16 @@ export default function Home({ products }: HomeProps) {
               <Product className="keen-slider__slide">
                 <Image src={product.imageUrl} alt="" width={520} height={480} />
                 <footer>
-                  <strong>{product.name}</strong>
-                  <span>{product.price}</span>
+                  <div>
+                    <strong>{product.name}</strong>
+                    <span>{product.price}</span>
+                  </div>
+
+                  <ContainerIconGreen>
+                    <Image src={BagIconCart} alt="icon-cart" />
+                  </ContainerIconGreen>
                 </footer>
-              </Product>
+              </Product> 
             </Link>
           );
         })}
