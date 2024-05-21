@@ -1,24 +1,40 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
 
 interface ItemsCartProviderProps {
   children: ReactNode;
 }
 
-const ItemsCartContext = createContext({});
+interface ItemsCartContent {
+  id: string;
+  imageUrl: string;
+  name: string;
+  price: string;
+}
+interface ItemsCartContextProps {
+  addItemCart: (item: {}) => void;
+  removeItemCart: (id: string) => void;
+  itemsCart: ItemsCartContent[];
+}
+export const ItemsCartContext = createContext({} as ItemsCartContextProps);
 
 export function ItemsCartProvider({ children }: ItemsCartProviderProps) {
-    const [itemsCart, setItemsCart] = useState([])
+  const [itemsCart, setItemsCart] = useState<ItemsCartContent[]>([]);
 
-    function addItemCart(item: {}){
-        setItemsCart((state) => [...state, item])
-    }
+  function addItemCart(item: ItemsCartContent) {
+    setItemsCart((state) => [...state, item]);
+  }
 
-    function removeItemCart(id: string) {
-        const newListItems = itemsCart.filter((item) => item.id !== id)
+  function removeItemCart(id: string) {
+    const newListItems = itemsCart.filter((item) => item.id !== id);
 
-        setItemsCart(newListItems)
-    }
+    setItemsCart(newListItems);
+  }
+  
   return (
-    <ItemsCartContext.Provider value={{}}>{children}</ItemsCartContext.Provider>
+    <ItemsCartContext.Provider
+      value={{ addItemCart, removeItemCart, itemsCart }}
+    >
+      {children}
+    </ItemsCartContext.Provider>
   );
 }

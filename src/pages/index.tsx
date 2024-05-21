@@ -12,6 +12,8 @@ import Stripe from 'stripe';
 import Link from 'next/link';
 import Head from 'next/head';
 import BagIconCart from '../assets/images/icon-bag-white.svg';
+import { useContext } from 'react';
+import { ItemsCartContext } from '../contexts/itemsCartContext';
 
 interface HomeProps {
   products: {
@@ -29,6 +31,9 @@ export default function Home({ products }: HomeProps) {
       spacing: 48,
     },
   });
+
+  const { addItemCart } = useContext(ItemsCartContext);
+
   return (
     <>
       <Head>
@@ -37,28 +42,25 @@ export default function Home({ products }: HomeProps) {
       <HomeContainer ref={sliderRef} className="keen-slider">
         {products.map((product) => {
           return (
-            <Link
-              href={`/product/${product.id}`}
-              key={product.id}
-              prefetch={false}
-            >
-              <Product className="keen-slider__slide">
+            <Product key={product.id} className="keen-slider__slide">
+              <Link href={`/product/${product.id}`} prefetch={false}>
                 <Image src={product.imageUrl} alt="" width={520} height={480} />
-                <footer>
-                  <div>
-                    <strong>{product.name}</strong>
-                    <span>{product.price}</span>
-                  </div>
+              </Link>
+              <footer>
+                <div>
+                  <strong>{product.name}</strong>
+                  <span>{product.price}</span>
+                </div>
 
-                  <ContainerIconGreen>
-                    <Image src={BagIconCart} alt="icon-cart" />
-                  </ContainerIconGreen>
-                </footer>
-              </Product> 
-            </Link>
+                <ContainerIconGreen onClick={() => addItemCart(product)}>
+                  <Image src={BagIconCart} alt="icon-cart" />
+                </ContainerIconGreen>
+              </footer>
+            </Product>
           );
         })}
       </HomeContainer>
+      
     </>
   );
 }

@@ -58,7 +58,7 @@ export const AmountItensCart = styled('div', {
 
 export const StyledPopup = styled(Popup, {
   '&-content': {
-    backgroundColor: '$gray800',
+    backgroundColor: '$gray700',
     height: '100%',
     padding: '3rem',
     marginRight: '0 !important',
@@ -70,6 +70,7 @@ export const ContentPopup = styled('div', {
     flexDirection: 'column',
     justifyContent: 'space-between',
     height: '90vh',
+    minWidth: 400,
 
   h1: {
     fontSize: '1.25rem',
