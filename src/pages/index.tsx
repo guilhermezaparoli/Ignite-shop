@@ -15,12 +15,14 @@ import BagIconCart from '../assets/images/icon-bag-white.svg';
 import { useContext } from 'react';
 import { ItemsCartContext } from '../contexts/itemsCartContext';
 
+
 interface HomeProps {
   products: {
     id: string;
     name: string;
     imageUrl: string;
     price: string;
+    idPrice: string
   }[];
 }
 
@@ -31,8 +33,8 @@ export default function Home({ products }: HomeProps) {
       spacing: 48,
     },
   });
-
   const { addItemCart } = useContext(ItemsCartContext);
+ 
 
   return (
     <>
@@ -60,7 +62,6 @@ export default function Home({ products }: HomeProps) {
           );
         })}
       </HomeContainer>
-      
     </>
   );
 }
@@ -72,6 +73,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const products = response.data.map((product) => {
     const price = product.default_price as Stripe.Price;
+    console.log(product)
     return {
       id: product.id,
       name: product.name,
@@ -80,6 +82,7 @@ export const getStaticProps: GetStaticProps = async () => {
         style: 'currency',
         currency: 'BRL',
       }).format(price.unit_amount / 100),
+      idPrice: price.id
     };
   });
 

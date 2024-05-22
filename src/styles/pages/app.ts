@@ -168,3 +168,12 @@ export const FooterPopup = styled('div', {
     }
   },
 });
+
+export const EmptyCart = styled("div", {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+
+
+
+})

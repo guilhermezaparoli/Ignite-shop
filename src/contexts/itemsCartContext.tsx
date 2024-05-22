@@ -9,6 +9,7 @@ interface ItemsCartContent {
   imageUrl: string;
   name: string;
   price: string;
+  idPrice: string
 }
 interface ItemsCartContextProps {
   addItemCart: (item: {}) => void;
