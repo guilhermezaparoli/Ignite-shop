@@ -15,4 +15,14 @@ export const globalStyles = globalCss({
         fontFamily: "Roboto",
         fontWeight: 400
     },
+
+    "::-webkit-scrollbar-thumb": {
+        backgroundColor: '$gray500',
+        
+    },
+    "::-webkit-scrollbar": {
+        backgroundColor: '$gray100',
+        borderRadius: 50,
+        width: 5,
+      }
 })

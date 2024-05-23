@@ -10,8 +10,9 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Head from 'next/head';
+import { ItemsCartContext } from '../../contexts/itemsCartContext';
 
 interface ProductProps {
   product: {
@@ -24,22 +25,7 @@ interface ProductProps {
   };
 }
 export default function Product({ product }: ProductProps) {
-  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
-    useState(false);
-  async function handleBuyProduct() {
-    try {
-      setIsCreatingCheckoutSession(true);
-      const response = await axios.post(`/api/checkout`, {
-        priceId: product.defaultPriceId,
-      });
-      const { checkoutUrl } = response.data;
-
-      window.location.href = checkoutUrl;
-    } catch (err) {
-      toast.error('Falha ao redirecionar ao checkout!');
-      setIsCreatingCheckoutSession(false);
-    }
-  }
+  const {addItemCart} = useContext(ItemsCartContext)
   return (
     <>
       <Head>
@@ -54,7 +40,7 @@ export default function Product({ product }: ProductProps) {
         <h1>{product.name}</h1>
         <span>{product.price}</span>
         <p>{product.description}</p>
-        <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>Comprar agora</button>
+        <button onClick={() => addItemCart(product)} >Colocar na sacola</button>
       </ProductDetails>
     </ProductContainer>
     </>
@@ -91,6 +77,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
         }).format(price.unit_amount / 100),
         description: product.description,
         defaultPriceId: price.id,
+        idPrice: price.id
       },
     },
     revalidate: 60 * 60 * 1,

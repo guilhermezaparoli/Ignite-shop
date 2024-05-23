@@ -108,10 +108,11 @@ function CustomApp({ Component, pageProps }: AppProps) {
                   )}
                 </div>
 
-                <EmptyCart>
-                  <h1>A sacola de compras está vazia!</h1>
-                </EmptyCart>
-
+                {itemsCart.length == 0 && (
+                  <EmptyCart>
+                    <h1>A sacola de compras está vazia!</h1>
+                  </EmptyCart>
+                )}
                 <FooterPopup>
                   <div>
                     <p>Quantidade</p>
@@ -139,7 +140,9 @@ function CustomApp({ Component, pageProps }: AppProps) {
                   </div>
 
                   <button
-                    disabled={isCreatingCheckoutSession || itemsCart.length <= 0}
+                    disabled={
+                      isCreatingCheckoutSession || itemsCart.length <= 0
+                    }
                     onClick={() => {
                       closeModal();
                       handleBuyProduct();

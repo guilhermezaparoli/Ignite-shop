@@ -101,6 +101,8 @@ export const ContainerItems = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: 24,
+  maxHeight: '60vh',
+  overflow: 'auto'
 });
 
 export const Item = styled('div', {
