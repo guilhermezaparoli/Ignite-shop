@@ -25,6 +25,7 @@ import {
 } from '../contexts/itemsCartContext';
 import Link from 'next/link';
 import axios from 'axios';
+import { ToastContainer } from 'react-toastify';
 
 globalStyles();
 
@@ -98,7 +99,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
                           <div>
                             <p>{item.name}</p>
                             <strong>{item.price}</strong>
-                            <a onClick={() => removeItemCart(item.id)}>
+                            <a onClick={() => removeItemCart(item.newId)}>
                               Remover
                             </a>
                           </div>
@@ -156,7 +157,9 @@ function CustomApp({ Component, pageProps }: AppProps) {
           </StyledPopup>
         </BoxHeader>
       </Header>
+      
       <Component {...pageProps} />
+      
     </Container>
   );
 }

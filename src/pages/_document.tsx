@@ -1,5 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 import { getCssText } from '../styles';
+import { ToastContainer, toast } from 'react-toastify';
 export default function Document() {
   return (
     <Html>
