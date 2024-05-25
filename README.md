@@ -1,6 +1,6 @@
-<h1 align="center">
-    <img alt="Ignite-shop" title="" src=".github/logo.svg" />
-</h1>
+<div align="center">
+    <img alt="Ignite-shop" title="" src=".github/logo-ignite-shop.svg" />
+</div>
 
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/guilhermezaparoli/Ignite-Shop">
@@ -38,10 +38,9 @@
  <a href="#-license">License</a>
 </p>
 
-
 ## 💻 About
 
-O Ignite Shop é um aplicação web de vendas de camisetas com temas do mundo dev, mostrando com detalhes a parte visual e informacional das camisetas, além de apresentar um carrinho onde o cliente pode adicionar as suas compras.  
+O Ignite Shop é um aplicação web de vendas de camisetas com temas do mundo dev, mostrando com detalhes a parte visual e informacional das camisetas, além de apresentar um carrinho onde o cliente pode adicionar as suas compras.
 
 O principal conceito treinado nesta aplicação foi a utilização do framework Next.js, explorando conceitos como o de SSR(Server Side Rendering) e SSG(Static Site Generation), além da utilização da biblioteca Stitches.js para a estilização.
 
@@ -69,17 +68,18 @@ Este projeto contem somente a parte Frontend Web, precisando somente executar a 
 
 Antes de baixar o projeto você vai precisar ter instalado na sua máquina as seguintes ferramentas:
 
-* [Git](https://git-scm.com)
-* [NodeJS](https://nodejs.org/en/)
-* [Yarn](https://yarnpkg.com/) ou [NPM](https://www.npmjs.com/)
+- [Git](https://git-scm.com)
+- [NodeJS](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/) ou [NPM](https://www.npmjs.com/)
 
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
 Precisará também fazer a seguinte configuração para rodar o projeto:
-* Criar uma conta e projeto no [Stripe](https://stripe.com/br), e copiar as chaves pública e privada do projeto
-* Criar na raiz do projeto o arquivo `.env.local`
-* Criar no arquivo `.env.local` as variáveis de ambiente, conforme o exemplo do arquivo `.env.example`
-* Colocar nas variáveis de ambiente os respectivos valores, incluindo as chaves copiadas do projeto do STRIPE
+
+- Criar uma conta e projeto no [Stripe](https://stripe.com/br), e copiar as chaves pública e privada do projeto
+- Criar na raiz do projeto o arquivo `.env.local`
+- Criar no arquivo `.env.local` as variáveis de ambiente, conforme o exemplo do arquivo `.env.example`
+- Colocar nas variáveis de ambiente os respectivos valores, incluindo as chaves copiadas do projeto do STRIPE
 
 Todos cartões de crédito disponíveis para teste (ex: 4242 4242 4242 4242) estão especificados na seguinte [documentação](https://stripe.com/docs/testing#cards) do Stripe
 
@@ -109,16 +109,16 @@ $ npm run dev
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-#### **Website**  ([Next.js](https://nextjs.org/)  +  [TypeScript](https://www.typescriptlang.org/))
+#### **Website** ([Next.js](https://nextjs.org/) + [TypeScript](https://www.typescriptlang.org/))
 
--   **[Stitches](https://stitches.dev/)**
--   **[Phosphor-Icons](https://phosphoricons.com/)**
--   **[React-popup](https://react-popup.elazizi.com/)**
--   **[Axios](https://github.com/axios/axios)**
--   **[Stripe](https://stripe.com/br)**
--   **[Keen-Slider](https://keen-slider.io/)**
+- **[Stitches](https://stitches.dev/)**
+- **[Phosphor-Icons](https://phosphoricons.com/)**
+- **[React-popup](https://react-popup.elazizi.com/)**
+- **[Axios](https://github.com/axios/axios)**
+- **[Stripe](https://stripe.com/br)**
+- **[Keen-Slider](https://keen-slider.io/)**
 
-> Para mais detalhes das dependências gerais da aplicação veja o arquivo  [package.json](./package.json)
+> Para mais detalhes das dependências gerais da aplicação veja o arquivo [package.json](./package.json)
 
 ---
 
@@ -126,7 +126,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 <img alt="Perfil Github" title="Perfil Github" src="https://github.com/guilhermezaparoli.png" width="100px" />
 
-[![Linkedin Badge](https://img.shields.io/badge/-Guilherme_Zaparoli_Gomes-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/https://www.linkedin.com/in/guilherme-zaparoli-gomes-b979b5179/)](https://www.linkedin.com/in/https://www.linkedin.com/in/guilherme-zaparoli-gomes-b979b5179/) 
+[![Linkedin Badge](https://img.shields.io/badge/-Guilherme_Zaparoli_Gomes-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/https://www.linkedin.com/in/guilherme-zaparoli-gomes-b979b5179/)](https://www.linkedin.com/in/https://www.linkedin.com/in/guilherme-zaparoli-gomes-b979b5179/)
 
 [![Gmail Badge](https://img.shields.io/badge/-guilhermezapas@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:guilhermezapas@gmail.com)](mailto:guilhermezapas@gmail.com)
 
