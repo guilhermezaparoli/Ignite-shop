@@ -7,6 +7,12 @@ export const HomeContainer = styled('main', {
   maxWidth: 'calc(100vw - ((100vw - 1180px) / 2))',
   marginLeft: 'auto',
   minHeight: 656,
+
+
+  '@bp1': {
+    padding: '0 16px',
+    minHeight: '100%'
+  }
 });
 
 export const Product = styled('div', {
@@ -21,6 +27,7 @@ export const Product = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
   minWidth: 540,
+  minHeight: 100,
   img: {
     objectFit: 'cover',
   },
@@ -67,6 +74,7 @@ export const Product = styled('div', {
       opacity: 1,
     },
   },
+
 });
 
 

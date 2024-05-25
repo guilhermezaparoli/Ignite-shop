@@ -27,12 +27,27 @@ interface HomeProps {
 }
 
 export default function Home({ products }: HomeProps) {
-  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+  const [sliderRef] = useKeenSlider({
     slides: {
-      perView: 3,
+      perView: 2.6,
       spacing: 48,
     },
-  });
+    rubberband: false,
+    breakpoints: {
+      '(max-width: 1366px)': {
+        slides: {
+          perView: 2.1,
+          spacing: 24,
+        },
+      },
+      '(max-width: 768px)': {
+        slides: {
+          perView: 1.5,
+          spacing: 12,
+        },
+      },
+    },
+  })
   const { addItemCart } = useContext(ItemsCartContext);
  
 

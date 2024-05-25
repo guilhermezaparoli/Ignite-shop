@@ -19,6 +19,7 @@ export const BoxHeader = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
+  padding: '0 16px'
 });
 
 export const ContainerCartIcon = styled('div', {

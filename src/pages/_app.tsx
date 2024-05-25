@@ -82,12 +82,12 @@ function CustomApp({ Component, pageProps }: AppProps) {
                   <ContainerImage>
                     <Image src={IconX} alt="" onClick={closeModal} />
                   </ContainerImage>
-                  <h1>Sacola de compras</h1>
+                  <h1>Carrinho de compras</h1>
 
                   {itemsCart.length > 0 && (
                     <ContainerItems>
                       {itemsCart.map((item) => (
-                        <Item key={item.id}>
+                        <Item key={item.newId}>
                           <div>
                             <Image
                               src={item.imageUrl}
@@ -111,7 +111,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
 
                 {itemsCart.length == 0 && (
                   <EmptyCart>
-                    <h1>A sacola de compras está vazia!</h1>
+                    <h1>O carrinho de compras está vazio!</h1>
                   </EmptyCart>
                 )}
                 <FooterPopup>
@@ -157,9 +157,8 @@ function CustomApp({ Component, pageProps }: AppProps) {
           </StyledPopup>
         </BoxHeader>
       </Header>
-      
+
       <Component {...pageProps} />
-      
     </Container>
   );
 }
@@ -167,6 +166,19 @@ function CustomApp({ Component, pageProps }: AppProps) {
 export default function App({ Component, pageProps, router }: AppProps) {
   return (
     <ItemsCartProvider>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+
       <CustomApp Component={Component} pageProps={pageProps} router={router} />
     </ItemsCartProvider>
   );

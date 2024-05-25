@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-
+import 'react-toastify/dist/ReactToastify.css';
 interface ItemsCartProviderProps {
   children: ReactNode;
 }
@@ -24,19 +24,19 @@ export function ItemsCartProvider({ children }: ItemsCartProviderProps) {
   const [itemsCart, setItemsCart] = useState<ItemsCartContent[]>([]);
 
   function generateUniqueId() {
-    console.log('entrou')
     return `${Date.now()}-${Math.floor(Math.random() * 1000000)}`;
   }
   function addItemCart(item: ItemsCartContent) {
-    item.newId = generateUniqueId()
-    setItemsCart((state) => [...state, item]);
-    toast.success("Item adicionado!")
+    // item.newId = generateUniqueId()
+    setItemsCart((state) => [...state, {...item, newId: generateUniqueId()}]);
+    toast.success("Item adicionado ao carrinho!")
   }
-
+console.log(itemsCart)
   function removeItemCart(id: string) {
     const newListItems = itemsCart.filter((item) => item.newId !== id);
 
     setItemsCart(newListItems);
+    toast.success("Item excluído com sucesso!")
   }
 
   return (
