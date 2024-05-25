@@ -25,6 +25,7 @@ export default function Success({ customerName, images }: successProps) {
 
       <meta name="robots" content="noindex" />
       <SuccessContainer>
+      <div style={{overflow: 'auto'}}>
         <ImagesContainer>
           {images.map((item) => (
             <Images key={item.dataProduct.id}>
@@ -38,6 +39,7 @@ export default function Success({ customerName, images }: successProps) {
 
           ))}
         </ImagesContainer>
+        </div>
 
         <h1>Compra efetuada!</h1>
 

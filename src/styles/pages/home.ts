@@ -8,11 +8,10 @@ export const HomeContainer = styled('main', {
   marginLeft: 'auto',
   minHeight: 656,
 
-
   '@bp1': {
-    padding: '0 16px',
-    minHeight: '100%'
-  }
+    // paddingLeft: '16px',
+    minHeight: '100%',
+  },
 });
 
 export const Product = styled('div', {
@@ -43,22 +42,37 @@ export const Product = styled('div', {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    gap: 5,
 
     backgroundColor: 'rgba(0, 0,6, 0.6)',
 
-    transform: 'translateY(110%)',
-    opacity: 0,
-    transition: 'all 0.2s ease-out',
+    '@bp1': {
+      padding: '0.5rem 1.5rem',
+      minHeight: 85
+
+    },
+    '@bp2': {
+      transform: 'translateY(110%)',
+      opacity: 0,
+      transition: 'all 0.2s ease-out',
+    },
 
     strong: {
       fontSize: '$lg',
       color: '$gray100',
+      '@bp1': {
+        fontSize: '$sm'
+      }
     },
 
     span: {
       fontSize: '$lg',
       fontWeight: 'bold',
       color: '$green300',
+
+      '@bp1': {
+        fontSize: '$sm'
+      }
     },
 
     div: {
@@ -74,24 +88,21 @@ export const Product = styled('div', {
       opacity: 1,
     },
   },
-
 });
 
-
-export const ContainerIconGreen = styled("div", {
+export const ContainerIconGreen = styled('div', {
   padding: 12,
   borderRadius: 6,
   backgroundColor: '$green500',
   cursor: 'pointer',
 
-
   img: {
-    color: '$white'
+    color: '$white',
   },
 
   transition: '0.3s',
 
   '&:hover': {
-    backgroundColor: '$green300'
-  }
-})
+    backgroundColor: '$green300',
+  },
+});

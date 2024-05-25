@@ -5,7 +5,9 @@ export const Container = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  minHeight: '100vh',
+  "@bp1": {
+    gap: 30 
+  }
 });
 
 export const Header = styled('header', {
@@ -63,6 +65,11 @@ export const StyledPopup = styled(Popup, {
     height: '100%',
     padding: '3rem',
     marginRight: '0 !important',
+
+    '@bp1': {
+      padding: '0.5rem 2rem',
+      width: '100%'
+    }
   },
 });
 
@@ -72,6 +79,10 @@ export const ContentPopup = styled('div', {
     justifyContent: 'space-between',
     height: '90vh',
     minWidth: 400,
+    '@bp1': {
+      minWidth: "100%",
+
+    },
 
   h1: {
     fontSize: '1.25rem',
@@ -102,7 +113,7 @@ export const ContainerItems = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: 24,
-  maxHeight: '60vh',
+  maxHeight: '50vh',
   overflow: 'auto'
 });
 

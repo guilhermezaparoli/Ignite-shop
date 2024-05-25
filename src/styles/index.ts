@@ -25,6 +25,7 @@ export const {
     },
 
     fontSizes: {
+      sm: '1rem',
       md: '1.125rem',
       lg: '1.25rem',
       xl: '1.5rem',
@@ -32,6 +33,7 @@ export const {
     },
   },
   media: {
-    bp1: '(max-width: 768px)'
+    bp1: '(max-width: 768px)',
+    bp2: '(min-width: 768px)'
   }
 });

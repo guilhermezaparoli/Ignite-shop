@@ -7,6 +7,14 @@ export const ProductContainer = styled('main', {
   gap: '4rem',
   maxWidth: 1180,
   margin: '0 auto',
+
+  '@bp1': {
+    gridTemplateColumns: '1fr',
+    justifyContent: 'center',
+    alignContent: 'center',
+    padding: '0 2rem',
+    gap: '2rem',
+  },
 });
 export const ImageContainer = styled('div', {
   width: '100%',
@@ -20,6 +28,15 @@ export const ImageContainer = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
   objectFit: 'cover',
+
+  '@bp1': {
+    height: '100%',
+    width: '100%',
+    img: {
+      height: '100%',
+      width: '100%',
+    },
+  },
 });
 
 export const ProductDetails = styled('div', {
@@ -29,6 +46,10 @@ export const ProductDetails = styled('div', {
   h1: {
     fontSize: '$2xl',
     color: '$gray300',
+
+    '@bp1': {
+      fontSize: '$xl',
+    },
   },
 
   span: {
@@ -36,6 +57,10 @@ export const ProductDetails = styled('div', {
     display: 'block',
     fontSize: '$2xl',
     color: '$gray300',
+
+    '@bp1': {
+      fontSize: '$xl',
+    },
   },
 
   p: {
@@ -43,6 +68,11 @@ export const ProductDetails = styled('div', {
     fontSize: '$md',
     lineHeight: 1.6,
     color: '$gray300',
+
+    '@bp1': {
+      fontSize: '$sm',
+      marginTop: '2rem',
+    },
   },
 
   button: {
@@ -61,7 +91,12 @@ export const ProductDetails = styled('div', {
 
     '&:disabled': {
       opacity: 0.6,
-      cursor: "not-allowed"
-    }
+      cursor: 'not-allowed',
+    },
+
+    '@bp1': {
+      fontSize: '$sm',
+      margin: '2rem 0',
+    },
   },
 });

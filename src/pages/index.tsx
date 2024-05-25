@@ -42,8 +42,8 @@ export default function Home({ products }: HomeProps) {
       },
       '(max-width: 768px)': {
         slides: {
-          perView: 1.5,
-          spacing: 12,
+          perView: 1.3,
+          spacing: 16,
         },
       },
     },
