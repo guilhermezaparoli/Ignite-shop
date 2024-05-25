@@ -29,14 +29,14 @@ export function ItemsCartProvider({ children }: ItemsCartProviderProps) {
   function addItemCart(item: ItemsCartContent) {
     // item.newId = generateUniqueId()
     setItemsCart((state) => [...state, {...item, newId: generateUniqueId()}]);
-    toast.success("Item adicionado ao carrinho!")
+    // toast.success("Item adicionado ao carrinho!")
   }
 console.log(itemsCart)
   function removeItemCart(id: string) {
     const newListItems = itemsCart.filter((item) => item.newId !== id);
 
     setItemsCart(newListItems);
-    toast.success("Item excluído com sucesso!")
+    // toast.success("Item excluído com sucesso!")
   }
 
   return (
