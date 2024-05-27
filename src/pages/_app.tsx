@@ -12,8 +12,11 @@ import {
   EmptyCart,
   FooterPopup,
   Header,
+  IconWrapper,
   Item,
+  QuantityInputContainer,
   StyledPopup,
+  WrapperInputAndButton,
 } from '../styles/pages/app';
 import Image from 'next/image';
 import BagCartIcon from '../assets/images/icon-bag.svg';
@@ -26,15 +29,31 @@ import {
 import Link from 'next/link';
 import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
+import { Minus, Plus } from 'phosphor-react';
 
 globalStyles();
+
+interface ItemsCartContent {
+  id: string;
+  imageUrl: string;
+  name: string;
+  price: string;
+  idPrice: string;
+  newId: string;
+  quantity: number;
+}
 
 function CustomApp({ Component, pageProps }: AppProps) {
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
-  const { itemsCart, removeItemCart } = useContext(ItemsCartContext);
+  const { itemsCart, removeItemCart, handleAmountItemCart } =
+    useContext(ItemsCartContext);
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
     useState(false);
+    const [totalItensCart, setTotalItensCart] = useState(0)
+
+
+
   async function handleBuyProduct() {
     try {
       setIsCreatingCheckoutSession(true);
@@ -42,7 +61,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
         pricesIds: itemsCart.map((item) => {
           return {
             price: item.idPrice,
-            quantity: 1,
+            quantity: item.quantity,
           };
         }),
       });
@@ -53,6 +72,17 @@ function CustomApp({ Component, pageProps }: AppProps) {
       setIsCreatingCheckoutSession(false);
     }
   }
+
+  function onIncrease(item: ItemsCartContent) {
+    handleAmountItemCart(item.quantity + 1, item.id);
+  }
+
+  function onDecrease(item: ItemsCartContent) {
+    if (item.quantity > 1) {
+      handleAmountItemCart(item.quantity - 1, item.id);
+    }
+  }
+
   return (
     <Container>
       <Header>
@@ -87,7 +117,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
                   {itemsCart.length > 0 && (
                     <ContainerItems>
                       {itemsCart.map((item) => (
-                        <Item key={item.newId}>
+                        <Item key={item.id}>
                           <div>
                             <Image
                               src={item.imageUrl}
@@ -99,9 +129,27 @@ function CustomApp({ Component, pageProps }: AppProps) {
                           <div>
                             <p>{item.name}</p>
                             <strong>{item.price}</strong>
-                            <a onClick={() => removeItemCart(item.newId)}>
-                              Remover
-                            </a>
+                            <WrapperInputAndButton>
+                              <QuantityInputContainer>
+                                <IconWrapper
+                                  disabled={item.quantity <= 1}
+                                  onClick={() => onDecrease(item)}
+                                >
+                                  <Minus size={18} weight="fill" />
+                                </IconWrapper>
+                                <input
+                                  type="number"
+                                  readOnly
+                                  value={item.quantity}
+                                />
+                                <IconWrapper onClick={() => onIncrease(item)}>
+                                  <Plus size={18} weight="fill" />
+                                </IconWrapper>
+                              </QuantityInputContainer>
+                              <a onClick={() => removeItemCart(item.id)}>
+                                Remover
+                              </a>
+                            </WrapperInputAndButton>
                           </div>
                         </Item>
                       ))}
@@ -118,8 +166,8 @@ function CustomApp({ Component, pageProps }: AppProps) {
                   <div>
                     <p>Quantidade</p>
                     <p>
-                      {itemsCart.length}{' '}
-                      {itemsCart.length == 1 ? 'item' : 'Itens'}
+                      {itemsCart.reduce((total, item) => total += item.quantity, 0)}
+                      {itemsCart.reduce((total, item) => total += item.quantity, 0) === 1 ? ' item' : ' Itens'}
                     </p>
                   </div>
                   <div>
@@ -132,7 +180,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
                             total +
                             Number(
                               item.price.replace('R$', '').replace(',', '.')
-                            ),
+                            ) * item.quantity,
                           0
                         )
                         .toFixed(2)

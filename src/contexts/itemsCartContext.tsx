@@ -12,36 +12,62 @@ interface ItemsCartContent {
   price: string;
   idPrice: string;
   newId: string;
+  quantity: number;
 }
 interface ItemsCartContextProps {
   addItemCart: (item: {}) => void;
   removeItemCart: (id: string) => void;
   itemsCart: ItemsCartContent[];
+  handleAmountItemCart: (amount: number, id: string) => void;
 }
 export const ItemsCartContext = createContext({} as ItemsCartContextProps);
 
 export function ItemsCartProvider({ children }: ItemsCartProviderProps) {
   const [itemsCart, setItemsCart] = useState<ItemsCartContent[]>([]);
 
-  function generateUniqueId() {
-    return `${Date.now()}-${Math.floor(Math.random() * 1000000)}`;
-  }
   function addItemCart(item: ItemsCartContent) {
-    // item.newId = generateUniqueId()
-    setItemsCart((state) => [...state, {...item, newId: generateUniqueId()}]);
-    // toast.success("Item adicionado ao carrinho!")
+    const itemExists = itemsCart.some((shirt) => shirt.id === item.id);
+
+    const newQuantityArr = itemsCart.map((shirt) => {
+      if (shirt.id === item.id) {
+        return {
+          ...shirt,
+          quantity: (shirt.quantity || 0) + 1,
+        };
+      }
+      return shirt;
+    });
+
+    if (!itemExists) {
+      newQuantityArr.push({ ...item, quantity: 1 });
+    }
+
+    setItemsCart(newQuantityArr);
   }
-console.log(itemsCart)
+
   function removeItemCart(id: string) {
-    const newListItems = itemsCart.filter((item) => item.newId !== id);
+    const newListItems = itemsCart.filter((item) => item.id !== id);
 
     setItemsCart(newListItems);
     // toast.success("Item excluído com sucesso!")
   }
 
+  function handleAmountItemCart(amount: number, id: string) {
+    const newQuantityArr = itemsCart.map((shirt) => {
+      if (shirt.id === id) {
+        return {
+          ...shirt,
+          quantity: amount,
+        };
+      }
+      return shirt;
+    });
+    setItemsCart(newQuantityArr);
+  }
+
   return (
     <ItemsCartContext.Provider
-      value={{ addItemCart, removeItemCart, itemsCart }}
+      value={{ addItemCart, removeItemCart, itemsCart, handleAmountItemCart }}
     >
       {children}
     </ItemsCartContext.Provider>

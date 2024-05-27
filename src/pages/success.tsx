@@ -16,7 +16,6 @@ interface successProps {
   }[];
 }
 export default function Success({ customerName, images }: successProps) {
-  console.log(images);
   return (
     <>
       <Head>
@@ -75,10 +74,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       dataProduct: shirt.price.product,
     };
   });
-
-  console.log(images);
-
-  console.log(session.line_items.data);
 
   return {
     props: {

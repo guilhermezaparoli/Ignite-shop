@@ -5,9 +5,9 @@ export const Container = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  "@bp1": {
-    gap: 30 
-  }
+  '@bp1': {
+    gap: 30,
+  },
 });
 
 export const Header = styled('header', {
@@ -21,7 +21,7 @@ export const BoxHeader = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  padding: '0 16px'
+  padding: '0 16px',
 });
 
 export const ContainerCartIcon = styled('div', {
@@ -68,21 +68,20 @@ export const StyledPopup = styled(Popup, {
 
     '@bp1': {
       padding: '0.5rem 2rem',
-      width: '100%'
-    }
+      width: '100%',
+    },
   },
 });
 
 export const ContentPopup = styled('div', {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    height: '90vh',
-    minWidth: 400,
-    '@bp1': {
-      minWidth: "100%",
-
-    },
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  height: '90vh',
+  minWidth: 400,
+  '@bp1': {
+    minWidth: '100%',
+  },
 
   h1: {
     fontSize: '1.25rem',
@@ -94,27 +93,26 @@ export const ContentPopup = styled('div', {
 });
 
 export const ContainerImage = styled('div', {
-    display: 'flex',
-    alignItems:'center',
-    justifyContent: 'flex-end',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
 
-    img: {
-        cursor: 'pointer',
-        transition: 'filter 0.3s',
+  img: {
+    cursor: 'pointer',
+    transition: 'filter 0.3s',
 
-        '&:hover': {
-            filter: 'brightness(1.2)'
-        }
-    }
-
-})
+    '&:hover': {
+      filter: 'brightness(1.2)',
+    },
+  },
+});
 
 export const ContainerItems = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: 24,
   maxHeight: '50vh',
-  overflow: 'auto'
+  overflow: 'auto',
 });
 
 export const Item = styled('div', {
@@ -162,7 +160,7 @@ export const FooterPopup = styled('div', {
     },
   },
 
-   button: {
+  button: {
     marginTop: 40,
     backgroundColor: '$green500',
     border: 0,
@@ -178,16 +176,85 @@ export const FooterPopup = styled('div', {
 
     '&:disabled': {
       opacity: 0.6,
-      cursor: "not-allowed"
-    }
+      cursor: 'not-allowed',
+    },
   },
 });
 
-export const EmptyCart = styled("div", {
+export const EmptyCart = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+});
 
+export const QuantityInputContainer = styled('div', {
+  flex: 1,
+  backgroundColor: '$gray700',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: '0.25rem',
+  borderRadius: 6,
+  padding: '0.5rem',
+  flexDirection: 'row !important',
+  maxWidth: 75,
 
+  input: {
+    textAlign: 'center',
+    width: '100%',
+    background: 'none',
+    border: 'none',
+    color: '$gray100',
+    fontSize: 16,
 
-})
+    '&:focus': {
+      outline: 'none',
+    },
+  },
+
+  /* REMOVENDO ESPAÇO DE SETAS DO INPUT DE NUMBER */
+  'input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button':
+    {
+      '-webkit-appearance': 'none',
+      margin: 0,
+    },
+
+  'input[type="number"]': {
+    '-moz-appearance': 'textfield',
+  },
+});
+
+export const IconWrapper = styled('button', {
+  width: '0.875rem',
+  height: '0.875rem',
+  border: 'none',
+  background: 'none',
+  color: '$green500',
+  transition: '0.4s',
+
+  '&:disabled': {
+    opacity: 0.4,
+    cursor: 'not-allowed',
+  },
+
+  '&:not(:disabled):hover': {
+    color: '$green300',
+  },
+
+  svg: {
+    cursor: 'pointer',
+  },
+});
+
+export const WrapperInputAndButton = styled('div', {
+  display: 'flex',
+  flexDirection: 'row !important',
+  alignItems: 'center',
+  gap: '2rem !important',
+
+  '@bp1': {
+    flexDirection: 'column !important',
+    alignItems: 'start',
+    gap: '0.5rem !important',
+  },
+});
