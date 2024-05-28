@@ -1,10 +1,16 @@
 import Link from 'next/link';
-import {  Images, ImagesContainer, SuccessContainer } from '../styles/pages/success';
+import {
+  Images,
+  ImagesContainer,
+  SuccessContainer,
+} from '../styles/pages/success';
 import { GetServerSideProps } from 'next';
 import { stripe } from '../lib/stripe';
 import Stripe from 'stripe';
 import Image from 'next/image';
 import Head from 'next/head';
+import { useContext } from 'react';
+import { ItemsCartContext } from '../contexts/itemsCartContext';
 
 interface successProps {
   customerName: string;
@@ -16,6 +22,7 @@ interface successProps {
   }[];
 }
 export default function Success({ customerName, images }: successProps) {
+  const { itemsCart } = useContext(ItemsCartContext);
   return (
     <>
       <Head>
@@ -24,28 +31,34 @@ export default function Success({ customerName, images }: successProps) {
 
       <meta name="robots" content="noindex" />
       <SuccessContainer>
-      <div style={{overflow: 'auto'}}>
-        <ImagesContainer>
-          {images.map((item) => (
-            <Images key={item.dataProduct.id}>
-            <Image
-              src={item.dataProduct.images[0]}
-              alt=""
-              width={120}
-              height={110}
-            />
-            </Images>
-
-          ))}
-        </ImagesContainer>
+        <div style={{ overflow: 'auto' }}>
+          <ImagesContainer>
+            {images.map((item) => (
+              <Images key={item.dataProduct.id}>
+                <Image
+                  src={item.dataProduct.images[0]}
+                  alt=""
+                  width={120}
+                  height={110}
+                />
+              </Images>
+            ))}
+          </ImagesContainer>
         </div>
 
         <h1>Compra efetuada!</h1>
 
         <p>
           Uhuul <strong>{customerName}</strong>, sua compra de
-          <strong> {images.length} camisetas</strong> logo estará a caminho da
-          sua casa.
+          <strong>
+            {' '}
+            {itemsCart.reduce(
+              (total, item) => (total += item.quantity),
+              0
+            )}{' '}
+            camisetas
+          </strong>{' '}
+          logo estará a caminho da sua casa.
         </p>
 
         <Link href="/">Voltar ao catágolo</Link>
