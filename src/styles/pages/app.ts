@@ -1,5 +1,6 @@
 import Popup from 'reactjs-popup';
 import { styled } from '..';
+import { keyframes } from '@stitches/react';
 
 export const Container = styled('div', {
   display: 'flex',
@@ -257,4 +258,39 @@ export const WrapperInputAndButton = styled('div', {
     alignItems: 'start',
     gap: '0.5rem !important',
   },
+});
+
+const rotate = keyframes({
+  to: { transform: 'rotate(1turn)' },
+});
+
+export const WrapperLoader = styled('div', {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  backgroundColor: 'rgba(0,0,0,0.7)',
+  height: '100%',
+  width: '100%',
+  zIndex: 9999999,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
+export const Loader = styled('div', {
+  width: '75px',
+  padding: '8px',
+  aspectRatio: 1,
+  borderRadius: '50%',
+  background: '#25b09b',
+  '--_m': `
+    conic-gradient(#0000 10%, #000),
+    linear-gradient(#000 0 0) content-box
+  `,
+  '-webkit-mask': 'var(--_m)',
+  mask: 'var(--_m)',
+  '-webkit-mask-composite': 'source-out',
+  'mask-composite': 'subtract',
+  animation: `${rotate} 1s infinite linear`,
 });
