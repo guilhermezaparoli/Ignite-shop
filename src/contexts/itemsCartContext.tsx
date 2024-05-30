@@ -1,5 +1,4 @@
-import { ReactNode, createContext, useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
+import { ReactNode, createContext, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 interface ItemsCartProviderProps {
   children: ReactNode;

@@ -6,11 +6,8 @@ import {
 } from '../styles/pages/success';
 import { GetServerSideProps } from 'next';
 import { stripe } from '../lib/stripe';
-import Stripe from 'stripe';
 import Image from 'next/image';
 import Head from 'next/head';
-import { useContext } from 'react';
-import { ItemsCartContext } from '../contexts/itemsCartContext';
 
 interface successProps {
   customerName: string;
