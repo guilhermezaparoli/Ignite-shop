@@ -14,15 +14,24 @@ import { ItemsCartContext } from '../contexts/itemsCartContext';
 
 interface successProps {
   customerName: string;
-  images: {
-    dataProduct: {
-      id: string;
-      images: string[];
+  product: {
+    id: string;
+    quantity: number;
+    price: {
+      product: {
+        images: string[];
+      };
     };
   }[];
 }
-export default function Success({ customerName, images }: successProps) {
-  const { itemsCart } = useContext(ItemsCartContext);
+export default function Success({
+  customerName,
+  product,
+}: successProps) {
+  const totalShirts = product.reduce(
+    (total, cur) => (total += cur.quantity),
+    0
+  );
   return (
     <>
       <Head>
@@ -33,32 +42,31 @@ export default function Success({ customerName, images }: successProps) {
       <SuccessContainer>
         <div style={{ overflow: 'auto' }}>
           <ImagesContainer>
-            {images.map((item) => (
-              <Images key={item.dataProduct.id}>
-                <Image
-                  src={item.dataProduct.images[0]}
-                  alt=""
-                  width={120}
-                  height={110}
-                />
-              </Images>
-            ))}
+            {product.map((item) => {
+              const images = [];
+              for (let i = 0; i < item.quantity; i++) {
+                images.push(
+                  <Images key={`${item.id}-${i}`}>
+                    <Image
+                      src={item.price.product.images[0]}
+                      alt=""
+                      width={120}
+                      height={110}
+                    />
+                  </Images>
+                );
+              }
+              return images;
+            })}
           </ImagesContainer>
         </div>
 
         <h1>Compra efetuada!</h1>
 
         <p>
-          Uhuul <strong>{customerName}</strong>, sua compra de
-          <strong>
-            {' '}
-            {itemsCart.reduce(
-              (total, item) => (total += item.quantity),
-              0
-            )}{' '}
-            camisetas
-          </strong>{' '}
-          logo estará a caminho da sua casa.
+          Uhuul <strong>{customerName.split(/\s+/)[0]}</strong>, sua compra de
+          <strong> {totalShirts} camisetas</strong> logo estará a caminho da sua
+          casa.
         </p>
 
         <Link href="/">Voltar ao catágolo</Link>
@@ -81,17 +89,14 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const session = await stripe.checkout.sessions.retrieve(sessionId, {
     expand: ['line_items', 'line_items.data.price.product'],
   });
+
+  const product = session.line_items.data;
   const customerName = session.customer_details.name;
-  const images = session.line_items.data.map((shirt) => {
-    return {
-      dataProduct: shirt.price.product,
-    };
-  });
 
   return {
     props: {
       customerName,
-      images,
+      product,
     },
   };
 };

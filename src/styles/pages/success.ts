@@ -57,10 +57,10 @@ export const SuccessContainer = styled('main', {
   },
 });
 export const Images = styled('div', {
-  width: 140,
-  height: 140,
+  // width: 140,
+  // height: 110,
   background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
-  boxShadow: '0px 0px 60px rgba(0, 0, 0, 0.8)',
+  // boxShadow: '0px 0px 60px rgba(0, 0, 0, 0.8)',
   borderRadius: '50%',
   position: 'relative',
 
@@ -76,7 +76,7 @@ export const Images = styled('div', {
 export const ImagesContainer = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  marginBottom: '3rem',
+  marginBottom: '2rem',
 
   'div + div': {
     marginLeft: 'calc(-100px / 2)',
